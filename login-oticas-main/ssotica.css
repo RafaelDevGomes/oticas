@@ -1,0 +1,393 @@
+/*
+    Variáveis
+*/
+:root {
+  --azul: #45a2e0;
+  --azul-hover: #2f8fd0;
+  --azul-logo: #29abe2;
+  --verde-zap: #1fae4b;
+  --verde-zap-escuro: #16923c;
+
+  --texto: #3c4045;
+  --texto-suave: #8a8f94;
+  --cinza-logo: #5f6164;
+  --borda-input: #cfd6dd;
+  --fundo-cadastro: #f2f4f6;
+  --branco: #fff;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato", system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.5;
+  color: var(--texto);
+  background-color: var(--branco);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input,
+button {
+  font: inherit;
+}
+
+svg {
+  display: block;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(69, 162, 224, 0.4);
+  outline-offset: 2px;
+}
+
+.pagina {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/*
+    Banner óticaZap PRO
+*/
+.anuncio {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 48px 5% 48px 41%;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: #eef3ef;
+}
+
+/* Foto da loja */
+.anuncio::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  z-index: -2;
+  background: url("https://images.unsplash.com/photo-1788347101825-f3a560ec1e2d?w=1800&q=80&auto=format&fit=crop") center / cover no-repeat;
+  filter: blur(2px) grayscale(1) brightness(1.12);
+}
+
+/* Clareia a área do texto e adiciona as luzes verdes */
+.anuncio::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 60% 18% at 70% 0%, rgba(31, 174, 75, 0.45), transparent),
+    radial-gradient(ellipse 70% 22% at 75% 100%, rgba(31, 174, 75, 0.35), transparent),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.82) 40%, rgba(255, 255, 255, 0.86) 75%, rgba(255, 255, 255, 0.6) 100%);
+}
+
+.anuncio-conteudo {
+  max-width: 460px;
+  font-family: "Lexend", "Lato", sans-serif;
+  color: #1f2326;
+}
+
+.zap-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 26px;
+  font-size: clamp(32px, 4.2vw, 56px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.zap-icone {
+  width: 0.9em;
+  height: 0.9em;
+  flex-shrink: 0;
+  color: var(--verde-zap);
+  filter: drop-shadow(0 2px 4px rgba(31, 174, 75, 0.35));
+}
+
+.zap-nome {
+  font-weight: 300;
+}
+
+.zap-pro {
+  font-weight: 800;
+  color: var(--verde-zap);
+}
+
+.anuncio-texto {
+  font-size: clamp(16px, 1.6vw, 22px);
+  font-weight: 300;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.anuncio-texto strong {
+  display: block;
+  font-weight: 600;
+}
+
+.anuncio-meta {
+  margin-top: 16px;
+  font-size: clamp(16px, 1.6vw, 22px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.anuncio-meta span {
+  color: var(--verde-zap);
+}
+
+.anuncio-meta sup {
+  font-size: 0.6em;
+}
+
+.btn-contratar {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 8px 28px 10px;
+  font-size: clamp(18px, 1.7vw, 24px);
+  font-weight: 600;
+  color: var(--branco);
+  background: linear-gradient(180deg, #2bc157, var(--verde-zap-escuro));
+  border: 3px solid var(--branco);
+  border-radius: 999px;
+  box-shadow:
+    0 0 0 3px var(--verde-zap),
+    0 10px 24px rgba(31, 174, 75, 0.35);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.btn-contratar:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 3px var(--verde-zap),
+    0 14px 28px rgba(31, 174, 75, 0.45);
+}
+
+/*
+    Área de acesso
+*/
+.acesso {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--branco);
+}
+
+.acesso-topo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16vh 24px 0;
+}
+
+/* Logo ssOtica */
+.logo {
+  position: relative;
+  font-family: "Ubuntu", "Lato", sans-serif;
+  font-size: 76px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--cinza-logo);
+}
+
+.logo-o {
+  position: relative;
+  display: inline-block;
+  color: var(--azul-logo);
+}
+
+/* Segunda "lente" acima do O */
+.logo-o::before {
+  content: "";
+  position: absolute;
+  top: -0.3em;
+  left: -0.36em;
+  width: 0.5em;
+  height: 0.5em;
+  border: 0.07em solid var(--azul-logo);
+  border-radius: 50%;
+}
+
+.logo-slogan {
+  margin-top: 4px;
+  font-family: "Ubuntu Condensed", "Lato", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.14em;
+  color: var(--texto-suave);
+}
+
+/* Formulário */
+.form {
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 300px);
+  margin-top: 14px;
+}
+
+.form label {
+  margin-bottom: 3px;
+  font-size: 13px;
+  color: var(--texto);
+}
+
+.form-linha {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.form-linha a {
+  font-size: 11px;
+  color: var(--texto-suave);
+}
+
+.form-linha a:hover {
+  color: var(--azul);
+  text-decoration: underline;
+}
+
+.form input {
+  height: 34px;
+  padding: 0 8px;
+  font-size: 13px;
+  color: var(--texto);
+  background-color: var(--branco);
+  border: 1px solid var(--borda-input);
+  border-radius: 2px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form input:focus {
+  outline: none;
+  border-color: var(--azul);
+  box-shadow: 0 0 0 2px rgba(69, 162, 224, 0.2);
+}
+
+.btn-entrar {
+  height: 36px;
+  margin-top: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--branco);
+  background-color: var(--azul);
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-entrar:hover {
+  background-color: var(--azul-hover);
+}
+
+.link-suporte {
+  position: relative;
+  z-index: 1;
+  margin-top: 26px;
+  font-size: 12px;
+  color: var(--texto-suave);
+}
+
+.link-suporte:hover {
+  color: var(--azul);
+  text-decoration: underline;
+}
+
+/* Bloco de cadastro com fundo cinza inclinado */
+.acesso-cadastro {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 24px 40px;
+  text-align: center;
+  isolation: isolate;
+}
+
+.acesso-cadastro::before {
+  content: "";
+  position: absolute;
+  inset: -22px 0 0;
+  z-index: -1;
+  background-color: var(--fundo-cadastro);
+  clip-path: polygon(0 22px, 100% 0, 100% 100%, 0 100%);
+}
+
+.acesso-cadastro h2 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--texto);
+}
+
+.acesso-cadastro p {
+  max-width: 250px;
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--texto-suave);
+}
+
+.btn-experimente {
+  display: grid;
+  place-items: center;
+  width: min(100%, 300px);
+  height: 36px;
+  margin-top: 18px;
+  font-size: 12px;
+  color: var(--azul);
+  background-color: var(--branco);
+  border: 1px solid var(--azul);
+  border-radius: 2px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-experimente:hover {
+  color: var(--branco);
+  background-color: var(--azul);
+}
+
+/*
+    Responsivo
+*/
+@media (max-width: 1100px) {
+  .anuncio {
+    padding-left: 30%;
+  }
+}
+
+@media (max-width: 900px) {
+  .pagina {
+    grid-template-columns: 1fr;
+  }
+
+  .anuncio {
+    display: none;
+  }
+
+  .acesso-topo {
+    padding-top: 12vh;
+  }
+}
+
+@media (max-width: 380px) {
+  .logo {
+    font-size: 62px;
+  }
+}

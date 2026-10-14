@@ -1,0 +1,372 @@
+/*
+    Variáveis
+*/
+:root {
+  --verde: #0e6b3f;
+  --verde-hover: #0a5632;
+  --verde-escuro: #0c5a35;
+  --verde-titulo: #13552f;
+
+  --texto: #1d2722;
+  --texto-suave: #4f5b54;
+  --icone: #35423a;
+  --placeholder: #8a948e;
+
+  --raio: 18px;
+  --raio-sm: 8px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.5;
+  color: var(--texto);
+  background-color: #3a3328;
+  min-height: 100vh;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input,
+button {
+  font: inherit;
+}
+
+svg {
+  display: block;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(14, 107, 63, 0.45);
+  outline-offset: 2px;
+}
+
+/*
+    Cenário de fundo (loja + pessoa)
+*/
+.cenario {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.cenario-loja {
+  position: absolute;
+  inset: -24px;
+  background: url("https://images.unsplash.com/photo-1788347101988-bf40abcbb2c7?w=1920&q=80&auto=format&fit=crop") center / cover no-repeat;
+  /* tons quentes e uniformes, como a iluminação da loja do print */
+  filter: blur(3px) grayscale(1) sepia(0.55) saturate(1.3) brightness(0.88) contrast(1.05);
+}
+
+.cenario-pessoa {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 55%;
+  background: url("https://images.unsplash.com/photo-1778392099969-e1799d7dd4ea?w=1400&q=80&auto=format&fit=crop") 50% 30% / cover no-repeat;
+  filter: sepia(0.25) saturate(1.1) brightness(0.95);
+  -webkit-mask-image: linear-gradient(to right, #000 50%, transparent 95%);
+  mask-image: linear-gradient(to right, #000 50%, transparent 95%);
+}
+
+/* Luz quente da janela e leve tom verde da marca */
+.cenario::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 186, 110, 0.22), transparent 45%),
+    radial-gradient(ellipse at 85% 20%, rgba(12, 90, 53, 0.28), transparent 55%),
+    linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.2));
+}
+
+/*
+    Card de login (vidro)
+*/
+.login {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 32px 16px;
+}
+
+.login-card {
+  width: min(100%, 420px);
+  padding: 32px 36px 28px;
+  text-align: center;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.3));
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--raio);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  
+  
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .login-card {
+    background: rgba(255, 255, 255, 0.88);
+  }
+}
+
+/* Logo */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 18px 10px 14px;
+  margin-bottom: 16px;
+  color: #fff;
+  background-color: var(--verde-escuro);
+  border-radius: 6px;
+  box-shadow: 0 6px 16px rgba(12, 90, 53, 0.25);
+}
+
+.logo-oculos {
+  width: 74px;
+  height: auto;
+}
+
+.logo-texto {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: "Montserrat", "Poppins", sans-serif;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.logo-texto small {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  margin-bottom: 2px;
+}
+
+.logo-texto strong {
+  font-size: 29px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* Títulos */
+.titulo {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--verde-titulo);
+}
+
+.subtitulo {
+  margin-top: 6px;
+  margin-bottom: 24px;
+  font-size: 13px;
+  color: var(--texto-suave);
+}
+
+/*
+    Formulário
+*/
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.campo label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.input-wrap {
+  position: relative;
+}
+
+.input-wrap input {
+  width: 100%;
+  height: 44px;
+  padding: 0 44px 0 42px;
+  font-size: 13px;
+  color: var(--texto);
+  background-color: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: var(--raio-sm);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.input-wrap input::placeholder {
+  color: var(--placeholder);
+}
+
+.input-wrap input:focus {
+  outline: none;
+  background-color: #fff;
+  border-color: var(--verde);
+  box-shadow: 0 0 0 3px rgba(14, 107, 63, 0.18);
+}
+
+.input-icone {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  width: 16px;
+  height: 16px;
+  color: var(--icone);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.toggle-senha {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  color: var(--icone);
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.toggle-senha:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.toggle-senha svg {
+  width: 17px;
+  height: 17px;
+}
+
+.toggle-senha .icone-olho,
+.toggle-senha[aria-pressed="true"] .icone-olho-fechado {
+  display: none;
+}
+
+.toggle-senha[aria-pressed="true"] .icone-olho {
+  display: block;
+}
+
+/*
+    Botões e links
+*/
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 46px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--raio-sm);
+  cursor: pointer;
+  transition: background-color 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+
+.btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primario {
+  margin-top: 6px;
+  color: #fff;
+  background-color: var(--verde);
+  border: 0;
+  box-shadow: 0 8px 18px rgba(14, 107, 63, 0.28);
+}
+
+.btn-primario:hover {
+  background-color: var(--verde-hover);
+}
+
+.link-esqueci {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--verde);
+}
+
+.link-esqueci:hover {
+  text-decoration: underline;
+}
+
+.divisor {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 14px 0;
+  font-size: 12px;
+  color: var(--texto-suave);
+}
+
+.divisor::before,
+.divisor::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.btn-contorno {
+  height: 44px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--verde-escuro);
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.btn-contorno:hover {
+  background-color: rgba(255, 255, 255, 0.45);
+}
+
+/*
+    Responsivo
+*/
+@media (max-width: 600px) {
+  .cenario-pessoa {
+    width: 100%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent 85%);
+    mask-image: linear-gradient(to bottom, #000 40%, transparent 85%);
+  }
+
+  .login-card {
+    padding: 28px 20px 24px;
+  }
+
+  .logo-oculos {
+    width: 62px;
+  }
+
+  .logo-texto strong {
+    font-size: 25px;
+  }
+}
